@@ -1,24 +1,24 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180531 (64-bit version)
+ * AML/ASL+ Disassembler version 20180629 (64-bit version)
  * Copyright (c) 2000 - 2018 Intel Corporation
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of dsdt.aml, Sun Jul  8 19:52:30 2018
+ * Disassembly of dsdt.aml, Tue Jul 24 15:41:00 2018
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x0002616A (156010)
+ *     Length           0x00026188 (156040)
  *     Revision         0x02
- *     Checksum         0x69
+ *     Checksum         0xB1
  *     OEM ID           "LENOVO"
  *     OEM Table ID     "SKL     "
  *     OEM Revision     0x00000000 (0)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20160527 (538314023)
  */
-DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
+DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
 {
     External (_GPE.TBNF, MethodObj)    // 0 Arguments
     External (_PR_.BGIA, UnknownObj)
@@ -415,8 +415,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Name (SS1, 0x00)
     Name (SS2, 0x00)
     Name (SS3, One)
+    One
     Name (SS4, One)
-    OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0767)
+    One
+    OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0771)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -1595,7 +1597,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         RTBC,   8, 
         TBCD,   16, 
         TBTE,   8, 
-        RWAN,   8
+        RWAN,   8, 
+        WDCT,   16, 
+        WLCT,   16, 
+        WDC2,   16, 
+        WMXS,   16, 
+        WMNS,   16
     }
 
     Scope (\_SB)
@@ -27573,13 +27580,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         0x00, 
         0x00
     })
-    Name (\_S3, Package (0x04)  // _S3_: S3 System State
-    {
-        0x05,
-        0x05,
-        0x00,
-        0x00
-    })
     Name (\_S4, Package (0x04)  // _S4_: S4 System State
     {
         0x06, 
@@ -27738,6 +27738,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         TIF2,   8, 
         Offset (0xD78), 
         BTHI,   1, 
+        TBAS,   1, 
         Offset (0xD79), 
         HDIR,   1, 
         HDEH,   1, 
@@ -32031,7 +32032,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (_Q7F, 0, NotSerialized)  // _Qxx: EC Query
         {
-            Fatal (0x01, 0x80010000, 0x00011DF6)
+            Fatal (0x01, 0x80010000, 0x00011DFC)
         }
 
         Method (_Q46, 0, NotSerialized)  // _Qxx: EC Query
