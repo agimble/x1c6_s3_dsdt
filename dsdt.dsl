@@ -18,7 +18,7 @@
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20160527 (538314023)
  */
-DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
+DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 {
     External (_GPE.TBNF, MethodObj)    // 0 Arguments
     External (_PR_.BGIA, UnknownObj)
@@ -415,9 +415,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
     Name (SS1, 0x00)
     Name (SS2, 0x00)
     Name (SS3, One)
-    One
     Name (SS4, One)
-    One
     OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0771)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
@@ -27577,6 +27575,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
     {
         0x00, 
         0x00, 
+        0x00, 
+        0x00
+    })
+    Name (\_S3, Package (0x04)  // _S3_: S3 System State
+    {
+        0x05, 
+        0x05, 
         0x00, 
         0x00
     })
